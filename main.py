@@ -16,7 +16,7 @@ print('What file would you like to open?')
 dir = os.listdir(os.path.dirname(__file__))
 
 for name in dir:
-    if any(x in name for x in [".jpg", ".png"]):
+    if any(x in name for x in [".jpg", ".png",".JPG",".PNG"]):
         print(name)
 
 file = input()
