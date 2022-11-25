@@ -4,9 +4,7 @@ import numpy as np
 from A4988 import A4988
 import RPi.GPIO as GPIO
 from RpiMotorLib import RpiMotorLib
-#import time
-#from pynput.mouse import Controller
-#from pynput import mouse
+
 
 class art_machine:
     def __init__(self, stepL, dirL, stepR, dirR):
@@ -48,6 +46,8 @@ class art_machine:
     def set_image(self,a):
         self._image = a
 
+    #moves the center motor carriage to the right using threading and returns
+    #the position of the carriage after moving one step.
     def moveRight(self,motorxy):
         steps = 10
         thread1 = threading.Thread(target=self._motorL.turnCCW(steps))
@@ -58,6 +58,9 @@ class art_machine:
         thread2.join()
         motorxy[0] += 1
         return motorxy
+
+    #moves the center motor carriage to the left using threading and returns
+    #the position of the carriage after moving one step.
     def moveLeft(self,motorxy):
         steps = 10
         thread1 = threading.Thread(target=self._motorL.turnCW(steps))
@@ -68,6 +71,9 @@ class art_machine:
         thread2.join()
         motorxy[0] -= 1
         return motorxy
+
+    #moves the center motor carriage up using threading and returns
+    #the position of the carriage after moving one step.
     def moveUp(self,motorxy):
         steps = 10
         thread1 = threading.Thread(target=self._motorL.turnCW(steps))
@@ -78,6 +84,9 @@ class art_machine:
         thread2.join()
         motorxy[1] += 1
         return motorxy
+
+    #moves the center motor carriage down using threading and returns
+    #the position of the carriage after moving one step.
     def moveDown(self,motorxy):
         steps = 10
         thread1 = threading.Thread(target=self._motorL.turnCCW(steps))
@@ -89,8 +98,9 @@ class art_machine:
         motorxy[1] -= 1
         return motorxy
     
+    #declare GPIO pin mode, set each pin as input or output, pull
+    #microstepping pins (ms1, ms2, ms3) high.
     def setup(self):
-
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self._xLimit, GPIO.IN)
         GPIO.setup(self._yLimit, GPIO.IN)
@@ -131,7 +141,7 @@ class art_machine:
                     #self._28BYJ.motor_run(self._28BYJpins,0.001,35,False,False,"half",0.001)
                     #up = False
                 if i < coords.size/2 - 1:
-                    if xy[0] == coords[i+1, 0] and abs(xy[1] - coords[i+1,1]) <= 4:
+                    if xy[0] == coords[i+1, 0] and abs(xy[1] - coords[i+1,1]) <= 1:
                         #print(f"here: 3")
                         if up == True:
                             self._28BYJ.motor_run(self._28BYJpins,.001,35,False,False,"half",0.05)
