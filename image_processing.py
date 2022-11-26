@@ -36,8 +36,6 @@ def getcoords(fileName):
     #    width = width*512/height
     #    height = 512
 
-
-    im = im.resize((int(width),int(height)), resample=Image.Resampling.BILINEAR)
     coords = np.array([[0,0]])
     for x in range(im.size[0]):
         for y in range(im.size[1]):
@@ -46,4 +44,3 @@ def getcoords(fileName):
                 coords = np.append(coords,[[x,y]],axis=0)
     return(coords)
 
-getcoords("us.jpg")
