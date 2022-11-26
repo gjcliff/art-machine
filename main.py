@@ -37,7 +37,7 @@ if file != outfile:
         print("cannot convert", file)
 
 #use the image_processing script to convert the image to an 2D array of coordinates.
-coords = im.getcoords(file,threshold)
+coords = im.getcoords(file)
 print("coords: ",coords)
 
 #declare art_machine object with RPI pin 17 as the left stepper motor step pin,
