@@ -18,6 +18,7 @@ def getcoords(fileName):
         
    
         im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
+        print("1")
         # cv.imshow("gaussian threshold", th)
 
         # cv.waitKey(0)
@@ -38,6 +39,7 @@ def getcoords(fileName):
 
     coords = np.array([[0,0]])
     for x,row in enumerate(im):
+        print("2")
         for y,pixel in enumerate(row):
             if pixel == 255:
                 coords = np.append(coords,[[x,y]],axis=0)
