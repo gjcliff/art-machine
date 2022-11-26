@@ -38,7 +38,7 @@ def getcoords(fileName):
 
     #coords = np.array([[0,0]])
     #print(im)
-    coords = list(zip(*np.where(im ==255)))
+    coords = np.array(list(zip(*np.where(im ==255))))
     #print(coords)
     coords *= 2
     return(coords)
