@@ -17,7 +17,7 @@ def getcoords(fileName):
         im = cv.medianBlur(im,5)
         
    
-        th = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
+        im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
         # cv.imshow("gaussian threshold", th)
 
         # cv.waitKey(0)
@@ -37,10 +37,12 @@ def getcoords(fileName):
     #    height = 512
 
     coords = np.array([[0,0]])
-    for x in range(im.size[0]):
-        for y in range(im.size[1]):
-            val = im.getpixel((x,y))
-            if val == 1:
+    for x,row in enumerate(im):
+        for y,pixel in enumerate(row):
+            if pixel == 255:
                 coords = np.append(coords,[[x,y]],axis=0)
+    print(coords)
+    coords *= 2
     return(coords)
 
+getcoords("wave.jpg")
