@@ -41,8 +41,8 @@ def getcoords(fileName):
         for y,pixel in enumerate(row):
             if pixel == 255:
                 coords = np.append(coords,[[x,y]],axis=0)
-    print(coords)
+    #print(coords)
     coords *= 2
     return(coords)
 
-getcoords("wave.jpg")
+#getcoords("wave.jpg")
