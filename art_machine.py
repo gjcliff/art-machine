@@ -141,7 +141,7 @@ class art_machine:
                     #self._28BYJ.motor_run(self._28BYJpins,0.001,35,False,False,"half",0.001)
                     #up = False
                 if i < len(coords)/2 - 1:
-                    if xy[0] == coords[i+1, 0] and abs(xy[1] - coords[i+1,1]) <= 2:
+                    if xy[0] == coords.index(i+1, 0) and abs(xy[1] - coords.index(i+1,1)) <= 2:
                         #print(f"here: 3")
                         if up == True:
                             self._28BYJ.motor_run(self._28BYJpins,.001,35,False,False,"half",0.05)
