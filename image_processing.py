@@ -43,7 +43,6 @@ def getcoords(fileName):
     coords = np.argwhere(im == 0)
     #coords = np.array(coords)
     print(coords,coords.size)
-    coords *= 2
     return(coords)
 
 getcoords("us.jpg")
