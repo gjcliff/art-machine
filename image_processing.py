@@ -41,7 +41,7 @@ def getcoords(fileName):
     im = np.array(im)
     print(im.shape)
     coords = np.argwhere(im == 0)
-    #coords = np.array(coords)
+    coords = np.array(coords)
     print(coords,coords.size)
     return(coords)
 
