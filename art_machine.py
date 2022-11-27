@@ -119,7 +119,7 @@ class art_machine:
         GPIO.output(self._ms3, GPIO.HIGH)
 
     def drawing(self,coords):
-        print(f"coords size: {coords.size}")
+        #print(f"coords size: {coords.size}")
         print(f"coords: {coords}")
         try:
             self._28BYJ.motor_run(self._28BYJpins,.001,35,True,False,"half",0.001) #pulling the sharpie up 100 steps
