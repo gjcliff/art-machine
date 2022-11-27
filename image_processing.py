@@ -17,7 +17,7 @@ def getcoords(fileName):
         im = cv.resize(og, dim, interpolation=cv.INTER_AREA)
         # cv.imshow("og image", im)
         im = cv.medianBlur(im,5)
-        im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
+        im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, .5)
         # cv.imshow("gaussian threshold", im)
 
         # cv.waitKey(0)
@@ -38,7 +38,8 @@ def getcoords(fileName):
 
     #coords = np.array([[0,0]])
     #print(im.shape)
-    im = cv.rotate(im,cv.ROTATE_90_CLOCKWISE)
+    im = cv.rotate(im,cv.ROTATE_90_COUNTERCLOCKWISE)
+    im = cv.flip(im,1)
     #im = np.array(im)
     #print(im.shape)
     coords = np.argwhere(im == 0)
@@ -48,4 +49,4 @@ def getcoords(fileName):
     #print(coords)
     return(coords)
 
-getcoords("us.jpg")
+# getcoords("mona-lisa.jpg")
