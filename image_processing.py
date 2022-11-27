@@ -17,12 +17,12 @@ def getcoords(fileName):
         im = cv.resize(og, dim, interpolation=cv.INTER_AREA)
         # cv.imshow("og image", im)
         im = cv.medianBlur(im,5)
-        im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, .5)
-        cv.imshow("gaussian threshold", im)
+        im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
+        # cv.imshow("gaussian threshold", im)
 
-        cv.waitKey(0)
-        cv.destroyAllWindows()
-        exit()
+        # cv.waitKey(0)
+        # cv.destroyAllWindows()
+        # exit()
       
     except:
         return(print("couldn't open file"))
@@ -49,4 +49,4 @@ def getcoords(fileName):
     #print(coords)
     return(coords)
 
-getcoords("wave.jpg")
+# getcoords("wave.jpg")
