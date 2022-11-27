@@ -18,7 +18,7 @@ def getcoords(fileName):
         
    
         im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
-        # cv.imshow("gaussian threshold", th)
+        # cv.imshow("gaussian threshold", im)
 
         # cv.waitKey(0)
         # cv.destroyAllWindows()
@@ -38,9 +38,11 @@ def getcoords(fileName):
 
     #coords = np.array([[0,0]])
     #print(im)
-    coords = np.array(list(zip(*np.where(im ==255))))
-    #print(coords)
+    im = np.array(im)
+    coords = np.argwhere(im == 0)
+    #coords = np.array(coords)
+    #print(coords,coords.size)
     coords *= 2
     return(coords)
 
-#getcoords("wave.jpg")
+#getcoords("us.jpg")
