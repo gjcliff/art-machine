@@ -36,14 +36,16 @@ def getcoords(fileName):
     #    width = width*512/height
     #    height = 512
 
-    coords = np.array([[0,0]])
+    #coords = np.array([[0,0]])
     #print(im.shape)
     im = cv.rotate(im,cv.ROTATE_90_CLOCKWISE)
     #im = np.array(im)
     #print(im.shape)
     coords = np.argwhere(im == 0)
-    coords = np.array(coords)
-    print(coords,coords.size)
+    #coords = np.array(coords)
+    # print(coords,coords.size)
+    coords *= 2
+    #print(coords)
     return(coords)
 
-#getcoords("us.jpg")
+getcoords("us.jpg")
