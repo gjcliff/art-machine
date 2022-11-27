@@ -36,7 +36,7 @@ def getcoords(fileName):
     #    width = width*512/height
     #    height = 512
 
-    #coords = np.array([[0,0]])
+    coords = np.array([[0,0]])
     #print(im.shape)
     im = np.array(im)
     print(im.shape)
