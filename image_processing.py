@@ -10,7 +10,7 @@ def getcoords(fileName):
 
     #attempt to import the image
     try:
-        og = Image.open(abs_file_path,0)
+        og = cv.imread(abs_file_path,0)
         og = ImageOps.exif_transpose(im)
         r = 500.0 / og.shape[1]
         dim = (500, int(og.shape[0] * r))
