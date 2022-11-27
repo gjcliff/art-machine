@@ -48,11 +48,11 @@ def getcoords(fileName):
     #im = np.array(im)
     #print(im.shape)
     coords = np.array(np.argwhere(im == 0))
-    print(coords, coords.type)
+    # print(coords, coords.type)
     #coords = np.array(coords)
     # print(coords,coords.size)
     #coords *= 2
     #print(coords)
     return(coords)
 
-getcoords("wave.jpg")
+# getcoords("wave.jpg")
