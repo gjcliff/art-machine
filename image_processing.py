@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import cv2 as cv
+from PIL import Image, ImageOps
 
 def getcoords(fileName):
     script_dir = os.path.dirname(__file__)
@@ -9,14 +10,13 @@ def getcoords(fileName):
 
     #attempt to import the image
     try:
-        og = cv.imread(abs_file_path,0)
+        og = Image.open(abs_file_path,0)
+        og = ImageOps.exif_transpose(im)
         r = 500.0 / og.shape[1]
         dim = (500, int(og.shape[0] * r))
         im = cv.resize(og, dim, interpolation=cv.INTER_AREA)
         # cv.imshow("og image", im)
         im = cv.medianBlur(im,5)
-        
-   
         im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
         # cv.imshow("gaussian threshold", im)
 
@@ -37,12 +37,13 @@ def getcoords(fileName):
     #    height = 512
 
     #coords = np.array([[0,0]])
-    #print(im)
+    #print(im.shape)
     im = np.array(im)
+    print(im.shape)
     coords = np.argwhere(im == 0)
     #coords = np.array(coords)
-    #print(coords,coords.size)
+    print(coords,coords.size)
     coords *= 2
     return(coords)
 
-#getcoords("us.jpg")
+getcoords("us.jpg")
