@@ -11,7 +11,7 @@ def getcoords(fileName):
     #attempt to import the image
     try:
         og = cv.imread(abs_file_path,0)
-        og = ImageOps.exif_transpose(im)
+        og = ImageOps.exif_transpose(og)
         r = 500.0 / og.shape[1]
         dim = (500, int(og.shape[0] * r))
         im = cv.resize(og, dim, interpolation=cv.INTER_AREA)
