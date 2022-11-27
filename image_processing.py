@@ -45,4 +45,4 @@ def getcoords(fileName):
     print(coords,coords.size)
     return(coords)
 
-getcoords("us.jpg")
+#getcoords("us.jpg")
