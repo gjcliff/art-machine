@@ -39,14 +39,20 @@ def getcoords(fileName):
     #coords = np.array([[0,0]])
     #print(im.shape)
     im = cv.rotate(im,cv.ROTATE_90_COUNTERCLOCKWISE)
-    im = cv.flip(im,1)
+    # im = cv.flip(im,0)
+    # cv.imshow("gaussian threshold", im)
+
+    # cv.waitKey(0)
+    # cv.destroyAllWindows()
+    # exit()
     #im = np.array(im)
     #print(im.shape)
-    coords = np.argwhere(im == 0)
+    coords = np.array(np.argwhere(im == 0))
+    print(coords, coords.type)
     #coords = np.array(coords)
     # print(coords,coords.size)
     #coords *= 2
     #print(coords)
     return(coords)
 
-# getcoords("wave.jpg")
+getcoords("wave.jpg")
