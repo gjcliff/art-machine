@@ -11,7 +11,7 @@ def getcoords(fileName):
     #attempt to import the image
     try:
         og = cv.imread(abs_file_path,0)
-        og = ImageOps.exif_transpose(og)
+        #og = ImageOps.exif_transpose(og)
         r = 500.0 / og.shape[1]
         dim = (500, int(og.shape[0] * r))
         im = cv.resize(og, dim, interpolation=cv.INTER_AREA)
@@ -38,8 +38,9 @@ def getcoords(fileName):
 
     coords = np.array([[0,0]])
     #print(im.shape)
-    im = np.array(im)
-    print(im.shape)
+    im = cv.rotate(im,cv.ROTATE_90_CLOCKWISE)
+    #im = np.array(im)
+    #print(im.shape)
     coords = np.argwhere(im == 0)
     coords = np.array(coords)
     print(coords,coords.size)
