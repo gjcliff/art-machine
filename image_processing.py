@@ -12,12 +12,12 @@ def getcoords(fileName):
     try:
         og = cv.imread(abs_file_path,0)
         #og = ImageOps.exif_transpose(og)
-        r = 1000.0 / og.shape[1]
-        dim = (1000, int(og.shape[0] * r))
+        r = 500.0 / og.shape[1]
+        dim = (500, int(og.shape[0] * r))
         im = cv.resize(og, dim, interpolation=cv.INTER_AREA)
         # cv.imshow("og image", im)
         im = cv.medianBlur(im,5)
-        im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
+        im = cv.adaptiveThreshold(im,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 4)
         # cv.imshow("gaussian threshold", im)
 
         # cv.waitKey(0)
@@ -48,10 +48,8 @@ def getcoords(fileName):
     #im = np.array(im)
     #print(im.shape)
     coords = np.array(np.argwhere(im == 0))
-    # print(coords, coords.type)
-    #coords = np.array(coords)
     # print(coords,coords.size)
-    #coords *= 2
+    coords *= 2
     #print(coords)
     return(coords)
 
