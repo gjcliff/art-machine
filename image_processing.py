@@ -12,8 +12,8 @@ def getcoords(fileName):
     try:
         og = cv.imread(abs_file_path,0)
         #og = ImageOps.exif_transpose(og)
-        r = 500.0 / og.shape[1]
-        dim = (500, int(og.shape[0] * r))
+        r = 750.0 / og.shape[1]
+        dim = (750, int(og.shape[0] * r))
         im = cv.resize(og, dim, interpolation=cv.INTER_AREA)
         # cv.imshow("og image", im)
         im = cv.medianBlur(im,5)
@@ -49,7 +49,7 @@ def getcoords(fileName):
     #print(im.shape)
     coords = np.array(np.argwhere(im == 0))
     # print(coords,coords.size)
-    coords *= 2
+    # coords *= 2
     # print(coords)
     return(coords)
 
