@@ -144,13 +144,13 @@ class art_machine:
                     if xy[0] == coords[i+1, 0] and abs(xy[1] - coords[i+1,1]) <= 4:
                         #print(f"here: 3")
                         if up == True:
-                            self._28BYJ.motor_run(self._28BYJpins,.001,35,False,False,"half",0.05)
+                            self._28BYJ.motor_run(self._28BYJpins,.001,40,False,False,"half",0.05)
                             time.sleep(0.005)
                             up = False
                     else:
                         if up == True:
                             #print(f"here: 5")
-                            self._28BYJ.motor_run(self._28BYJpins,.001,35,False,False,"half",0.05)
+                            self._28BYJ.motor_run(self._28BYJpins,.001,40,False,False,"half",0.05)
                             self._28BYJ.motor_run(self._28BYJpins,.001,35,True,False,"half",0.05)
                         else:
                             #print(f"here: 6")
